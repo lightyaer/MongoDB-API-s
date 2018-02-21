@@ -19,7 +19,7 @@ var port = process.env.PORT || 3000;
 //   process.env.PORT = 3000;
 //   process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
 // } else if( env === 'production' ) {
-//   process.env.MONGODB_URI = 'mongodb://todoappuser:lightyaer@mlab@ds245228.mlab.com:45228/todos-app'
+//   process.env.MONGODB_URI = 'mongodb://todoappuser:todoappuser@mlab@ds245228.mlab.com:45228/todos-app'
 // }
 
 

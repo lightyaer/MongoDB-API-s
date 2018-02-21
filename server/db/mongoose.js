@@ -10,7 +10,7 @@ let db = {
     mlab: 'mongodb://todoappuser:lightyaer@mlab@ds245228.mlab.com:45228/todos-app'
   };
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/TodoApp');
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/TodoApp');
 
 module.exports = {
     mongoose
