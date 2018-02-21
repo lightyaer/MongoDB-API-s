@@ -7,6 +7,22 @@ var { Todo } = require('./models/todos');
 var { User } = require('./models/user');
 var { ObjectID } = require('mongodb');
 var app = express();
+var port = process.env.PORT || 3000;
+
+// var env = process.env.NODE_ENV || 'development';
+// console.log('env *****', env);
+// if( env === 'development') {
+//   process.env.PORT = 3000;
+//   process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoApp';
+  
+// } else if( env === 'test') {
+//   process.env.PORT = 3000;
+//   process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
+// } else if( env === 'production' ) {
+//   process.env.MONGODB_URI = 'mongodb://todoappuser:lightyaer@mlab@ds245228.mlab.com:45228/todos-app'
+// }
+
+
 
 app.use(bodyParser.json());
 
@@ -52,8 +68,8 @@ app.get('/todos/:id', (req, res) => {
 
 });
 
-app.listen(3000, () => {
-    console.log('Started on Port 3000');
+app.listen(port, () => {
+    console.log(`Started on port ${port}`);
 });
 
 module.exports = {
