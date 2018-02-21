@@ -7,10 +7,11 @@ mongoose.Promise = global.Promise;
 
 let db = {
     localhost: 'mongodb://localhost:27017/TodoApp',
-    mlab: 'mongodb://todoappuser:lightyaer@mlab@ds245228.mlab.com:45228/todos-app'
+    mlab: 'mongodb://todoappuser:todoappuser@ds245228.mlab.com:45228/todos-app'
   };
-
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/TodoApp');
+//'mongodb://todoappuser:todoappuser@ds245228.mlab.com:45228/todos-app'
+//process.env.MONGODB_URI || 'mongodb://localhost:27017/TodoApp'
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/TodoApp');
 
 module.exports = {
     mongoose
