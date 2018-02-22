@@ -14,7 +14,7 @@ var port = process.env.PORT || 3000;
 // if( env === 'development') {
 //   process.env.PORT = 3000;
 //   process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoApp';
-  
+
 // } else if( env === 'test') {
 //   process.env.PORT = 3000;
 //   process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
@@ -49,12 +49,13 @@ app.get('/todos', (req, res) => {
 
 });
 
-
 app.get('/todos/:id', (req, res) => {
+
     var id = req.params.id;
+
     if (!ObjectID.isValid(id)) {
-        res.status(404).send("ID not Valid")
-        return console.log('ID not valid');
+        return res.status(404).send("ID not Valid")
+
     }
 
     Todo.findById(id).then((todo) => {
@@ -67,6 +68,29 @@ app.get('/todos/:id', (req, res) => {
     });
 
 });
+
+
+app.delete('/todos/:id', (req, res) => {
+    var id = req.params.id;
+    console.log(id);
+    if (!ObjectID.isValid(id)) {
+        return res.status(404).send("ID not Valid")
+
+    }
+    Todo.findByIdAndRemove(id).then((todo) => {
+
+        if (!todo) {
+            return res.status(404).send('Todo not found');
+        }
+        return res.status(200).send(todo);
+
+
+    }).catch((e) => {
+        return res.status(400).send();
+    });
+
+});
+
 
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
