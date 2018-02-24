@@ -72,7 +72,7 @@ app.get('/todos/:id', (req, res) => {
 
 app.delete('/todos/:id', (req, res) => {
     var id = req.params.id;
-    console.log(id);
+
     if (!ObjectID.isValid(id)) {
         return res.status(404).send("ID not Valid")
 
@@ -82,7 +82,7 @@ app.delete('/todos/:id', (req, res) => {
         if (!todo) {
             return res.status(404).send('Todo not found');
         }
-        return res.status(200).send(todo);
+        return res.status(200).send({ todo });
 
 
     }).catch((e) => {
@@ -99,3 +99,5 @@ app.listen(port, () => {
 module.exports = {
     app
 }
+
+
