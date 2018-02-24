@@ -8,12 +8,12 @@ const { Todo } = require('./../models/todos');
 const todos = [{
   _id: new ObjectID(),
   text: 'First test Todo'
-}, {
+  }, {
   _id: new ObjectID(),
   text: 'Second test Todo',
   completed: 'true',
   compltedAt: '999'
-}, {
+  }, {
   _id: new ObjectID(),
   text: 'Third test Todo'
 }]
@@ -159,7 +159,6 @@ describe('DELETE /todos/:id', () => {
 
 
 });
-
 
 describe('PATCH /todos/:id', () => {
 
