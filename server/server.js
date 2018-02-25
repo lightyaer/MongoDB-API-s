@@ -113,7 +113,7 @@ app.patch('/todos/:id', (req, res) => {
 
 //SIGN UP, add new user and generate token for user
 app.post('/users', (req, res) => {
- 
+
     var body = _.pick(req.body, ['email', 'password']);
 
     var newUser = new User(body);
@@ -149,6 +149,14 @@ app.post('/users/login', (req, res) => {
 
 });
 
+//LOGOUT , remove the token assoiated with the user
+app.delete('/users/me/token', authenticate, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send();
+    }, () => {
+        res.status(400).send();
+    })
+});
 
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
