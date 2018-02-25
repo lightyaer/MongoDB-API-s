@@ -111,9 +111,9 @@ app.patch('/todos/:id', (req, res) => {
 
 });
 
-
+//SIGN UP, add new user and generate token for user
 app.post('/users', (req, res) => {
-
+ 
     var body = _.pick(req.body, ['email', 'password']);
 
     var newUser = new User(body);
@@ -128,11 +128,12 @@ app.post('/users', (req, res) => {
     });
 });
 
-
+//Authenticate the token in the Header && get the user credential for the token
 app.get('/users/me', authenticate, (req, res) => {
-    res.send(req.user)
+    res.send(req.user);
 });
 
+//LOGIN, get the user from db, generate a new token for user and send it in the reponse
 app.post('/users/login', (req, res) => {
 
     var body = _.pick(req.body, ['email', 'password']);
@@ -141,16 +142,18 @@ app.post('/users/login', (req, res) => {
         user.generateAuthToken().then((token) => {
             res.status(200).header('x-auth', token).send(user);
         });
-      
+
     }).catch(() => {
         res.send(400).send();
     });
 
 });
 
+
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
 });
+
 
 module.exports = {
     app
