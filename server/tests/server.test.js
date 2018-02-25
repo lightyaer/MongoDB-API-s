@@ -52,6 +52,7 @@ describe('POST /todos', () => {
   });
 });
 
+
 describe('GET /todos', () => {
   it('should get all todos', (done) => {
     request(app)
@@ -63,6 +64,7 @@ describe('GET /todos', () => {
       .end(done);
   })
 })
+
 
 describe('GET /todos:id', () => {
   it('should return todo doc', (done) => {
@@ -94,6 +96,7 @@ describe('GET /todos:id', () => {
 
   })
 });
+
 
 describe('DELETE /todos/:id', () => {
 
@@ -140,6 +143,7 @@ describe('DELETE /todos/:id', () => {
 
 
 });
+
 
 describe('PATCH /todos/:id', () => {
 
@@ -213,6 +217,7 @@ describe('GET /users/me', () => {
       .end(done);
   });
 })
+
 
 describe('POST /user', () => {
   it('should create a user', (done) => {
