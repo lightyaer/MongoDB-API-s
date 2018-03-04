@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const _ = require('lodash');
 const { ObjectID } = require('mongodb');
 const bcrypt = require('bcryptjs');
+const cors = require('cors');
 
 var { mongoose } = require('./db/mongoose');
 var { Todo } = require('./models/todos');
@@ -13,8 +14,10 @@ var app = express();
 var port = process.env.PORT;
 
 app.use(bodyParser.json());
+app.use(cors())
 
 
+//#region Todo
 
 app.post('/todos', authenticate, async (req, res) => {
 
@@ -25,7 +28,7 @@ app.post('/todos', authenticate, async (req, res) => {
         });
         const doc = await todo.save()
         res.status(200).send(doc);
-    }catch(e){
+    } catch (e) {
         res.status(400).send(e);
     }
 
@@ -117,6 +120,10 @@ app.patch('/todos/:id', authenticate, async (req, res) => {
 
 });
 
+//#endregion
+
+//#region User
+
 //SIGN UP, add new user and generate token for user
 app.post('/users', async (req, res) => {
 
@@ -161,6 +168,8 @@ app.delete('/users/me/token', authenticate, async (req, res) => {
     }
 
 });
+
+//#endregion
 
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
