@@ -1,7 +1,4 @@
 var mongoose = require('mongoose');
-var { Todo } = require('../models/todos');
-var { User } = require('../models/user');
-
 
 mongoose.Promise = global.Promise;
 
